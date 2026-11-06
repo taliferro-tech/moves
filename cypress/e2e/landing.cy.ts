@@ -17,14 +17,16 @@ describe( 'Moves home page', () => {
     cy.get( '.um-trigger' ).should( 'have.length', 1 );
   } );
 
-  it( 'shows the demo video beside the quote, and hides the frame if it can’t load', () => {
+  it( 'shows the demo video in the hero and the banner beside the quote, falling back to the banner if the video can’t load', () => {
     cy.visit( '/' );
     cy.get( '.moves-quote__copy' ).should( 'contain.text', 'What needs attention?' );
-    cy.get( '.moves-quote__video' ).should( 'have.attr', 'src' ).and( 'match', /moves-todd-demo-(light|dark)\.mp4$/ );
+    cy.get( '.moves-quote__banner' ).should( 'have.attr', 'src' ).and( 'match', /moves-banner\.png$/ );
+    cy.get( '.moves-hero__video' ).should( 'have.attr', 'src' ).and( 'match', /moves-todd-demo-(light|dark)\.mp4$/ );
     // A load error (file missing or broken). Fired directly: blocking the URL
     // doesn't work once an earlier test has the real file in the media cache.
-    cy.get( '.moves-quote__video' ).then( ( $v ) => $v[0].dispatchEvent( new Event( 'error' ) ) );
-    cy.get( '.moves-quote__media' ).should( 'not.exist' );
+    cy.get( '.moves-hero__video' ).then( ( $v ) => $v[0].dispatchEvent( new Event( 'error' ) ) );
+    cy.get( '.moves-hero__video' ).should( 'not.exist' );
+    cy.get( '.moves-hero__art .moves-banner' ).should( 'be.visible' );
   } );
 
   it( 'goes home from the 16Ahead lockup in the /app rail', () => {

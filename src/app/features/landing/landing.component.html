@@ -11,7 +11,7 @@
     <div class="moves-hero__art">
       <div class="moves-orbit moves-orbit--one"></div>
       <div class="moves-orbit moves-orbit--two"></div>
-      <div class="moves-art__caption">THE WORK<br>IS ALIVE</div><img src="/assets/moves-banner.png" alt="A visual system of connected tasks moving toward a target" class="moves-banner">
+      <div class="moves-art__caption">THE WORK<br>IS ALIVE</div>@if (!demoVideoMissing()) { <video #demoVideo class="moves-hero__video" [src]="theme.isDark() ? 'assets/video/moves-todd-demo-dark.mp4' : 'assets/video/moves-todd-demo-light.mp4'" [poster]="theme.isDark() ? 'assets/video/moves-todd-demo-dark.jpg' : 'assets/video/moves-todd-demo-light.jpg'" autoplay muted [muted]="true" loop playsinline preload="metadata" (error)="demoVideoMissing.set(true)" aria-label="16Ahead spots a stalled task and reassigns it, a PM gives an unowned task to Priya from a push notification, and 16Ahead reorders two tasks so a deadline holds."></video> } @else { <img src="/assets/moves-banner.png" alt="A visual system of connected tasks moving toward a target" class="moves-banner"> }
       <div class="moves-float moves-float--top"><span class="moves-dot moves-dot--green"></span> On track <b>72%</b></div>
       <div class="moves-float moves-float--bottom"><span class="moves-dot moves-dot--orange"></span> Stalled work detected</div>
     </div>
@@ -78,9 +78,9 @@
         <blockquote>“What needs attention?”<br><strong>should not be a daily mystery.</strong></blockquote>
         <div class="moves-quote__line"></div>
         <p class="moves-quote__note">Built for the work between the meetings, the follow-ups, and the finish line.</p>
-      </div> @if (!demoVideoMissing()) { <figure class="moves-quote__media">
-        <video #demoVideo class="moves-quote__video" [src]="theme.isDark() ? 'assets/video/moves-todd-demo-dark.mp4' : 'assets/video/moves-todd-demo-light.mp4'" [poster]="theme.isDark() ? 'assets/video/moves-todd-demo-dark.jpg' : 'assets/video/moves-todd-demo-light.jpg'" autoplay muted [muted]="true" loop playsinline preload="metadata" (error)="demoVideoMissing.set(true)" aria-label="16Ahead spots a stalled task and reassigns it, a PM gives an unowned task to Priya from a push notification, and 16Ahead reorders two tasks so a deadline holds."></video>
-      </figure> }
+      </div> <figure class="moves-quote__media">
+        <img src="/assets/moves-banner.png" alt="A visual system of connected tasks moving toward a target" class="moves-quote__banner">
+      </figure>
     </div>
   </section>
   <section class="moves-faq">

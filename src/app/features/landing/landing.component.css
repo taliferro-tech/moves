@@ -190,6 +190,32 @@
     animation: bannerDrift 8s ease-in-out infinite
 }
 
+/* TODD demo video in the hero art slot (handoff_landing_video). */
+.moves-hero__video {
+    position: relative;
+    z-index: 3;
+    display: block;
+    height: 92%;
+    max-height: 640px;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 36px;
+    background: var(--paper);
+    box-shadow: var(--shadow)
+}
+
+/* With the video in the slot, the badges sit just outside its top and
+   bottom edges (the video is 92% tall and centered: edges at 4% and 96%). */
+.moves-hero__art:has(.moves-hero__video) .moves-float--top {
+    top: auto;
+    bottom: calc(96% + 12px)
+}
+
+.moves-hero__art:has(.moves-hero__video) .moves-float--bottom {
+    bottom: auto;
+    top: calc(96% + 8px)
+}
+
 .moves-orbit {
     position: absolute;
     border: 1px solid rgba(47, 107, 255, .2);
@@ -534,7 +560,7 @@
     line-height: 1.5
 }
 
-/* TODD demo video beside the quote (handoff_landing_video). */
+/* Banner graphic beside the quote. */
 .moves-quote .moves-wrap {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -547,14 +573,12 @@
     justify-self: end
 }
 
-.moves-quote__video {
+.moves-quote__banner {
     display: block;
-    width: clamp(260px, 26vw, 380px);
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
-    border-radius: 36px;
-    background: var(--paper);
-    box-shadow: var(--shadow)
+    width: clamp(320px, 40vw, 620px);
+    max-width: none;
+    filter: drop-shadow(0 35px 35px rgba(15, 17, 21, .16));
+    animation: bannerDrift 8s ease-in-out infinite
 }
 
 @media (max-width: 850px) {
@@ -566,8 +590,8 @@
         margin-top: 60px
     }
 
-    .moves-quote__video {
-        width: min(100%, 320px)
+    .moves-quote__banner {
+        width: 100%
     }
 }
 
@@ -757,6 +781,12 @@
 
     .moves-banner {
         width: 125%
+    }
+
+    .moves-hero__art:has(.moves-hero__video) {
+        height: 520px;
+        margin-top: 70px;
+        margin-bottom: 60px
     }
 
     .moves-float--top {

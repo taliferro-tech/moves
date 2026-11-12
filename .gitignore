@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Video files (kept locally, not in git)
+*.mp4
+*.mov
+*.webm
+*.m4v

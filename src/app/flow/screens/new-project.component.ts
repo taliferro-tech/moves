@@ -171,7 +171,7 @@ const PUBLIC = /press|announce|publish/i;
     .rules li.off { opacity: .5; text-decoration: line-through; }
     @media (max-width: 960px) {
       .frame { padding: 0 16px 24px; }
-      .cols { grid-template-columns: 1fr; }
+      .cols { grid-template-columns: minmax(0, 1fr); }
       .paste { min-height: 220px; }
       .right { min-height: 0; padding: 18px 16px; }
       .line { padding: 16px 12px 4px; overflow-x: auto; }

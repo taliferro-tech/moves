@@ -40,7 +40,7 @@ const MAYA_URL = 'https://marketing.16ahead.com';
     </div>
   `,
   styles: [`
-    .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
     .task { display: flex; align-items: center; gap: 14px; padding: 14px 16px 14px 20px; margin-top: 10px; border-radius: 24px; background: var(--surface); }
     .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; text-align: left; border: 0; background: none; padding: 0; cursor: pointer; color: var(--text); }
     .txt strong { font-size: 16px; }

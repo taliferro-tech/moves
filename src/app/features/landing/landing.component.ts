@@ -8,7 +8,6 @@ import { AlsoFromUsComponent } from '../../shared/also-from-us/also-from-us.comp
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 
 interface Faq { question: string; answer: string; }
-interface Testimonial { quote: string; name: string; role: string; result: string; }
 
 @Component({
   selector: 'app-landing',
@@ -37,18 +36,7 @@ export class LandingComponent implements OnDestroy {
     { number: '03', title: 'A board with a pulse.', copy: 'See what is active, what is stuck, and what deserves the next hour—all without another status meeting.', accent: 'green' }
   ];
 
-  readonly numbers = [
-    { value: '12,741', label: 'signals detected' },
-    { value: '3,791', label: 'next steps identified' },
-    { value: '1,255', label: 'follow-ups surfaced' },
-    { value: '449', label: 'opportunities kept moving' }
-  ];
 
-  readonly testimonials: Testimonial[] = [
-    { quote: 'Moves helped us stop losing revenue in the handoff. We saw which proposals were going quiet, acted sooner, and turned more open work into closed business.', name: 'Don Jones', role: 'Revenue Operations', result: 'More proposals moving' },
-    { quote: 'Before Moves, our project board told us what existed. Now it tells us what is at risk. That visibility helped us protect renewals and create room for new revenue.', name: 'Linda Hood', role: 'Client Services', result: 'Renewals protected' },
-    { quote: 'The biggest change was simple: no more guessing what to do next. Our team follows through faster, and the work that used to sit in limbo is producing revenue again.', name: 'Celeste Rodgers', role: 'Growth & Partnerships', result: 'Faster follow-through' }
-  ];
 
   readonly faqs: Faq[] = [
     { question: 'What makes a move different from a task?', answer: 'A move is tied to the work it serves and watched for momentum, so 16Ahead can surface when a next action is aging or at risk.' },

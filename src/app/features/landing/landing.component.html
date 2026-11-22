@@ -33,14 +33,6 @@
       </div>
     </div>
   </section>
-  <section class="moves-numbers">
-    <div class="moves-wrap">
-      <p class="moves-kicker">Moves in motion</p>
-      <div class="moves-numbers__grid">
-        <div *ngFor="let number of numbers"><strong>{{ number.value }}</strong><span>{{ number.label }}</span></div>
-      </div>
-    </div>
-  </section>
   <section class="moves-system" id="system">
     <div class="moves-wrap">
       <div class="moves-system__top">
@@ -53,22 +45,6 @@
           <p>{{ feature.copy }}</p>
         </article>
       </div>
-    </div>
-  </section>
-  <section class="moves-stories">
-    <div class="moves-wrap">
-      <div class="moves-stories__head">
-        <p class="moves-kicker">Revenue, in motion</p>
-        <h2>When the next move is clear,<br><i>more work gets won.</i></h2>
-      </div>
-      <div class="moves-stories__grid">
-        <article *ngFor="let story of testimonials">
-          <div class="moves-story__result">↗ {{ story.result }}</div>
-          <blockquote>“{{ story.quote }}”</blockquote>
-          <footer><strong>{{ story.name }}</strong><span>{{ story.role }}</span></footer>
-        </article>
-      </div>
-      <p class="moves-stories__note">Draft customer stories — pending approval.</p>
     </div>
   </section>
   <section class="moves-quote">

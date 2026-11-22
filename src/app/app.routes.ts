@@ -46,10 +46,12 @@ export const routes: Routes = [
     path: 'missions',
     children: [
       { path: '', title: 'Missions | Moves', loadComponent: () => import( './features/missions/missions-pages.component' ).then( ( m ) => m.MissionsPageComponent ) },
+      { path: 'new', title: 'New Mission | Moves', loadComponent: () => import( './features/missions/missions-pages.component' ).then( ( m ) => m.NewMissionPageComponent ) },
       { path: 'cockpit', title: 'Missions cockpit | Moves', loadComponent: () => import( './features/missions/missions-pages.component' ).then( ( m ) => m.MissionsCockpitPageComponent ) },
       { path: ':id', title: 'Mission | Moves', loadComponent: () => import( './features/missions/missions-pages.component' ).then( ( m ) => m.MissionPageComponent ) },
     ],
   },
+  { path: 'playbooks', title: 'Playbooks | Moves', loadComponent: () => import( './features/missions/missions-pages.component' ).then( ( m ) => m.PlaybooksPageComponent ) },
   // The old task-list screens, folded into the flow map.
   { path: 'moves', redirectTo: 'app', pathMatch: 'full' },
   { path: 'moves-view', redirectTo: 'app', pathMatch: 'full' },

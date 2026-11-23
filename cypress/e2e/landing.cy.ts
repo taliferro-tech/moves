@@ -48,6 +48,6 @@ describe( 'Moves home page', () => {
     cy.visit( '/' );
     cy.get( '.moves-made-by' ).should( 'contain.text', 'Powered by 16Ahead' );
     cy.get( 'a[appAlsoFromUs]' ).should( 'contain.text', 'Also from us' ).and( 'have.attr', 'href' ).and( 'not.include', 'moves.taliferro.tech' );
-    cy.get( '.tt-foot' ).should( 'contain.text', 'Taliferro Tech' ).and( 'contain.text', 'Help' );
+    cy.get( '.sf' ).should( 'contain.text', 'Taliferro Tech' ).and( 'contain.text', 'Help' ).and( 'contain.text', 'Book a consultation' );
   } );
 } );

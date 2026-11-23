@@ -42,6 +42,12 @@ describe( 'Plan reply (1a-1d, 10a)', () => {
     cy.get( '[data-cy="started"]' ).should( 'contain.text', 'Started' ).find( 'a' ).should( 'have.attr', 'href', '/missions/reach-named-person' );
   } );
 
+  it( 'opened with nothing asked yet, it says what happens and shows the ask box (not a bare page)', () => {
+    cy.visitWithCypressAuth( '/missions/new', ME );
+    cy.get( '[data-cy="new-mission-lede"]' ).should( 'contain.text', 'Nothing starts until you press Start' ).find( 'a' ).should( 'have.attr', 'href', '/playbooks' );
+    cy.get( '[data-cy="ask-input"]' ).should( 'be.visible' );
+  } );
+
   it( 'shows “Planning…” with what TODD is doing while it plans', () => {
     cy.fixture( 'missions/planning.json' ).then( ( m ) => {
       cy.intercept( 'POST', MISSIONS, { statusCode: 202, body: { success: true, mode: 'mission', mission: { ...m, id: 'p1' } } } );

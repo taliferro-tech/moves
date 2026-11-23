@@ -47,8 +47,10 @@ abstract class MissionsPage implements OnInit {
 const SHELL_STYLES = `
   :host { display: block; min-height: 100vh; background: var(--bg); color: var(--text); font-family: var(--font); }
   .page { max-width: 1280px; margin: 0 auto; padding: 28px 36px 64px; }
-  .top { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; font-size: 14px; font-weight: 700; }
+  /* Wraps on a phone: "Moves / Missions · Playbooks · Cockpit · New Mission" is wider than 390px. */
+  .top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 24px; font-size: 14px; font-weight: 700; }
   .top a { color: var(--text); text-decoration: none; }
+  .top a.btn { color: #fff; }
   .top .muted { color: var(--muted); }
   .spacer { flex: 1; }
   .signin { background: var(--surface); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
@@ -136,13 +138,18 @@ export class MissionPageComponent extends MissionsPage {
     <div class="page">
       <nav class="top"><a routerLink="/app">Moves</a><span class="muted">/</span><a routerLink="/missions">Missions</a><span class="muted">/ New</span><span class="spacer"></span><a routerLink="/playbooks" data-cy="to-playbooks">Playbooks</a></nav>
       <h1>What do you need done?</h1>
+      <p class="lede" data-cy="new-mission-lede">Say it the way you’d tell a teammate. 16Ahead writes a plan with an owner on every step (the assistants’ and yours) and how much of your time it needs. Nothing starts until you press Start. Not sure how to put it? <a routerLink="/playbooks">Start from a Playbook</a>.</p>
       @if (signedIn() === false) { ${SIGN_IN} }
       @if (signedIn()) {
         <tm-plan-reply [request]="q()" [origin]="playbook() ? 'playbook' : 'ask'" [playbookId]="playbook()" [viewerId]="viewerId()" [people]="people()" detailBase="/missions/" />
       }
     </div>
   `,
-  styles: [SHELL_STYLES + ' h1 { margin: 0 0 18px; font-size: 32px; letter-spacing: -.02em; }'],
+  styles: [SHELL_STYLES + `
+    h1 { margin: 0 0 8px; font-size: 32px; letter-spacing: -.02em; }
+    .lede { margin: 0 0 20px; max-width: 640px; font-size: 16px; line-height: 1.5; color: var(--muted); }
+    .lede a { color: var(--blue); font-weight: 700; text-decoration: none; }
+  `],
 } )
 export class NewMissionPageComponent extends MissionsPage {
   private readonly route = inject( ActivatedRoute );

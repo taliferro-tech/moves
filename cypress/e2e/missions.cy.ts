@@ -555,3 +555,14 @@ describe( 'Ty’s requests, each start to finish (from the real engine)', () => 
     } );
   } );
 } );
+
+describe( 'Missions on a phone', () => {
+  beforeEach( stubApi );
+
+  it( 'the Missions top bar wraps instead of scrolling sideways at 390px (daily check, 2026-11-23)', () => {
+    cy.viewport( 390, 844 );
+    cy.visit( '/missions' );
+    cy.get( '[data-cy="to-new-mission"]' ).should( 'be.visible' );
+    cy.document().then( ( doc ) => expect( doc.documentElement.scrollWidth ).to.be.at.most( 390 ) );
+  } );
+} );

@@ -2,7 +2,7 @@
   <mv-site-header [landing]="isLanding()" />
 }
 @if (hasOwnHeader()) {
-  <div class="app-global-actions"><app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" (signOut)="signOut()" /></div>
+  <div class="app-global-actions"><app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" [userId]="(userId$ | async) ?? ''" (signOut)="signOut()" /></div>
 }
 <router-outlet></router-outlet>
 <app-moves-assistant-launcher></app-moves-assistant-launcher>

@@ -56,7 +56,7 @@ import { AvatarComponent, LockupComponent } from '../ui/flow-ui.components';
             <div class="who"><strong>{{ store.pm()?.name }}</strong><span>{{ store.pm()?.role }}</span></div>
           </div>
           <div class="tools">
-            <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" (signOut)="signOut()" />
+            <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" [userId]="(userId$ | async) ?? ''" (signOut)="signOut()" />
             <button type="button" class="theme" (click)="theme.toggle()" [attr.aria-label]="theme.isDark() ? 'Light mode' : 'Dark mode'">{{ theme.isDark() ? '☀' : '☾' }}</button>
           </div>
         </div>
@@ -65,7 +65,7 @@ import { AvatarComponent, LockupComponent } from '../ui/flow-ui.components';
       <header class="topbar">
         <a routerLink="/" class="brand" aria-label="16Ahead Moves home"><mv-lockup /></a>
         <button type="button" class="theme" (click)="theme.toggle()" [attr.aria-label]="theme.isDark() ? 'Light mode' : 'Dark mode'">{{ theme.isDark() ? '☀' : '☾' }}</button>
-        <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" (signOut)="signOut()" />
+        <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" [userId]="(userId$ | async) ?? ''" (signOut)="signOut()" />
       </header>
 
       <main class="main">
@@ -135,6 +135,7 @@ export class FlowShellComponent {
   readonly isLoggedIn$ = this.auth.isLoggedIn();
   readonly userName$ = this.auth.getUser().pipe( map( u => u?.displayName || '' ) );
   readonly userEmail$ = this.auth.getUser().pipe( map( u => u?.email || '' ) );
+  readonly userId$ = this.auth.getUser().pipe( map( u => u?.uid || '' ) );
 
   readonly projects = computed( () => {
     const s = this.store.state();

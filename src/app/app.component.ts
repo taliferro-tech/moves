@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
   readonly isLoggedIn$ = this.authService.isLoggedIn();
   readonly userName$ = this.authService.getUser().pipe( map( user => user?.displayName || '' ) );
   readonly userEmail$ = this.authService.getUser().pipe( map( user => user?.email || '' ) );
+  readonly userId$ = this.authService.getUser().pipe( map( user => user?.uid || '' ) );
   // Every page outside /app gets the site header (lockup, links, Menu).
   // /about draws the shared Help/About header instead, with the corner
   // Menu floating beside it (product-pages.config ownMenu: false).

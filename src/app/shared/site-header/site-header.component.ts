@@ -33,7 +33,7 @@ import { PlatformMenuComponent } from '../platform-menu/platform-menu.component'
       </nav>
       <button type="button" class="theme" (click)="theme.toggle()" [attr.aria-label]="theme.isDark() ? 'Light mode' : 'Dark mode'">{{ theme.isDark() ? '☀' : '☾' }}</button>
       <a class="open" routerLink="/app" data-cy="site-open-app">Open Moves</a>
-      <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" (signOut)="signOut()" />
+      <app-platform-menu [isAdmin]="(isAdmin$ | async) ?? false" [isLoggedIn]="(isLoggedIn$ | async) ?? false" [userName]="(userName$ | async) ?? ''" [userEmail]="(userEmail$ | async) ?? ''" [userId]="(userId$ | async) ?? ''" (signOut)="signOut()" />
     </header>
   `,
   styles: [`
@@ -71,6 +71,7 @@ export class SiteHeaderComponent {
   readonly isLoggedIn$ = this.auth.isLoggedIn();
   readonly userName$ = this.auth.getUser().pipe( map( u => u?.displayName || '' ) );
   readonly userEmail$ = this.auth.getUser().pipe( map( u => u?.email || '' ) );
+  readonly userId$ = this.auth.getUser().pipe( map( u => u?.uid || '' ) );
 
   async signOut (): Promise<void> {
     await this.auth.signOut();
